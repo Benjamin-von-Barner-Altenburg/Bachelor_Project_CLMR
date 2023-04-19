@@ -6,4 +6,4 @@
 #SBATCH --time=02:00:00          # Run time (hh:mm:ss) - run for one hour max
 #SBATCH --partition=brown    # Run on either the Red or Brown queue
 
-python3 preprocess.py --dataset magnatagatune
+python3 preprocess.py --dataset audio --dataset_dir data/Unsorted22kHz
