@@ -8,4 +8,4 @@
 
 # load module
 echo "Running on $(hostname):"
-python3 linear_evaluation.py --dataset audio --dataset_dir data/Edm_Data --checkpoint_path runs/CLMRv2-audio/version_3/events.out.tfevents.1682441821.desktop19.23539.0
+python3 linear_evaluation.py --dataset audio --dataset_dir data/Edm_Data --checkpoint_path runs/CLMRv2-audio/version_3/checkpoints/epoch=197-step=1583.ckpt
