@@ -23,6 +23,8 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="SimCLR")
     parser = Trainer.add_argparse_args(parser)
+    parser.add_argument("--dataset", type=str, default="magnatagatune")
+    parser.add_argument("--dataset_dir", type=str, default="./data")
 
     config = yaml_config_hook("./config/config.yaml")
     for k, v in config.items():
