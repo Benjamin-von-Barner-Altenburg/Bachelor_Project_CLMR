@@ -8,4 +8,4 @@
 
 # load module
 echo "Running on $(hostname):"
-python3 main.py --dataset audio --dataset_dir data/UnsortedChopped22kHz
+python3 main.py --dataset audio --dataset_dir data/Edm_Data
