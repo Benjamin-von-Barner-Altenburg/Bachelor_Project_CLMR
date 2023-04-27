@@ -23,8 +23,6 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="SimCLR")
     parser = Trainer.add_argparse_args(parser)
-    parser.add_argument("--dataset", type=str, default="magnatagatune")
-    parser.add_argument("--dataset_dir", type=str, default="./data")
 
     config = yaml_config_hook("./config/config.yaml")
     for k, v in config.items():
@@ -42,9 +40,13 @@ if __name__ == "__main__":
     # ------------
     # dataloaders
     # ------------
-    train_dataset = get_dataset(args.dataset, args.dataset_dir, subset="train")
-    valid_dataset = get_dataset(args.dataset, args.dataset_dir, subset="valid")
-    test_dataset = get_dataset(args.dataset, args.dataset_dir, subset="test")
+    train_dataset = get_dataset(args.dataset, args.dataset_dir + "/train", subset="train")
+    valid_dataset = get_dataset(args.dataset, args.dataset_dir + "/val", subset="valid")
+    test_dataset = get_dataset(args.dataset, args.dataset_dir + "/test", subset="test")
+
+    print("train_dataset: " + str(train_dataset.__getitem__(1)) + " fl: " + str(train_dataset.fl[1]))
+    print("valid_dataset: " + str(valid_dataset.__getitem__(1)) + " fl: " + str(valid_dataset.fl[1]))
+    print("test_dataset: " + str(test_dataset.__getitem__(1)) + " fl: " + str(test_dataset.fl[1]))
 
     contrastive_train_dataset = ContrastiveDataset(
         train_dataset,
