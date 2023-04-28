@@ -52,7 +52,7 @@ class AUDIO(Dataset):
             Tuple [Tensor, Tensor]: ``(waveform, label)``
         """
         audio, _ = self.load(n)
-        label = []
+        label = 0
         return audio, label
 
     def __len__(self) -> int:

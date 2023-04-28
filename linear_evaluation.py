@@ -44,10 +44,6 @@ if __name__ == "__main__":
     valid_dataset = get_dataset(args.dataset, args.dataset_dir + "/val", subset="valid")
     test_dataset = get_dataset(args.dataset, args.dataset_dir + "/test", subset="test")
 
-    print("train_dataset: " + str(train_dataset.__getitem__(1)) + " fl: " + str(train_dataset.fl[1]))
-    print("valid_dataset: " + str(valid_dataset.__getitem__(1)) + " fl: " + str(valid_dataset.fl[1]))
-    print("test_dataset: " + str(test_dataset.__getitem__(1)) + " fl: " + str(test_dataset.fl[1]))
-
     contrastive_train_dataset = ContrastiveDataset(
         train_dataset,
         input_shape=(1, args.audio_length),
