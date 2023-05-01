@@ -22,9 +22,22 @@ class AUDIO(Dataset):
     ) -> None:
         super(AUDIO, self).__init__(root)
 
+        self.labels = [
+            "BassHouse",
+            "Drum&Bass",
+            "FutureHouse",
+            "Hardstyle",
+            "House",
+            "MelodicDubstep"
+            ]
+
+        self.label2idx = {}
+        for idx, label in enumerate(self.labels):
+            self.label2idx[label] = idx
+
         self._path = root
         self._src_ext_audio = src_ext_audio
-        self.n_classes = n_classes
+        self.n_classes = len(self.label2idx.keys())
 
         self.fl = glob(
             os.path.join(self._path, "**", "*{}".format(self._src_ext_audio)),
@@ -42,17 +55,17 @@ class AUDIO(Dataset):
         fp = self.fl[n]
         return fp
 
-    def __getitem__(self, n: int) -> Tuple[Tensor, Tensor]:
+    def __getitem__(self, n: int) -> Tuple[Tensor, str]:
         """Load the n-th sample from the dataset.
 
         Args:
             n (int): The index of the sample to be loaded
 
         Returns:
-            Tuple [Tensor, Tensor]: ``(waveform, label)``
+            Tuple [Tensor, str]: ``(waveform, label)``
         """
-        audio, _ = self.load(n)
-        label = 0
+        audio, _, label = self.load(n)
+        label = self.label2idx[label]
         return audio, label
 
     def __len__(self) -> int:

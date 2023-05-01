@@ -39,7 +39,9 @@ class Dataset(TorchDataset):
         target_fp = self.target_file_path(n)
         try:
             audio, sample_rate = torchaudio.load(target_fp)
+            _, label1, _ = target_fp.split("_")
+            _, _, label = label1.split("/")
         except OSError as e:
             print("File not found, try running `python preprocess.py` first.\n\n", e)
             return
-        return audio, sample_rate
+        return audio, sample_rate, label

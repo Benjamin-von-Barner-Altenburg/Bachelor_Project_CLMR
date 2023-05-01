@@ -4,8 +4,8 @@ from clmr.datasets import get_dataset
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dataset", type=str, default="magnatagatune")
-    parser.add_argument("--dataset_dir", type=str, default="./data")
+    parser.add_argument("--dataset", type=str, default="audio")
+    parser.add_argument("--dataset_dir", type=str, default="data/Edm_Data")
     parser.add_argument("--sample_rate", type=int, default=22050)
     args = parser.parse_args()
 
